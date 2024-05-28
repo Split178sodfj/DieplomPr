@@ -36,6 +36,9 @@ namespace WPFUIKitProfessional.Pages
 
         }
 
+
+
+
         private void orderBindingNavigator_RefreshItems(object sender, EventArgs e)
         {
 
@@ -90,6 +93,37 @@ namespace WPFUIKitProfessional.Pages
         private void pictureBox2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void orderDataGridView_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            //try
+            //{
+            //    // Проверка введенных данных пользователем
+            //    // Например, проверка на ввод числа
+            //    if (e.ColumnIndex == 1 && !int.TryParse(e.FormattedValue.ToString(), out int value))
+            //    {
+            //        throw new Exception("Неверная сумма. Пожалуйста, введите действительное число.");
+            //    }
+            //    // Добавить дополнительную логику проверки, если необходимо
+            //}
+            //catch (Exception ex)
+            //{
+            //    // Отобразить сообщение об ошибке пользователю
+            //    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    e.Cancel = true; // Отменить операцию редактирования
+            //    return;
+            //}
+
+        }
+
+        private void orderDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+                
+        }
+
+        private void orderDataGridView_RowValidating(object sender, DataGridViewCellCancelEventArgs e)
+        {
         }
     }
 }

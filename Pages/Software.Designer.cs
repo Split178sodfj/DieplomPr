@@ -32,6 +32,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Software));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.deeplomDataSet1 = new WPFUIKitProfessional.DeeplomDataSet1();
             this.программноеОбеспечениеBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.программноеОбеспечениеTableAdapter = new WPFUIKitProfessional.DeeplomDataSet1TableAdapters.ПрограммноеОбеспечениеTableAdapter();
@@ -107,7 +110,7 @@
             this.программноеОбеспечениеBindingNavigator.MovePreviousItem = null;
             this.программноеОбеспечениеBindingNavigator.Name = "программноеОбеспечениеBindingNavigator";
             this.программноеОбеспечениеBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.программноеОбеспечениеBindingNavigator.Size = new System.Drawing.Size(1041, 45);
+            this.программноеОбеспечениеBindingNavigator.Size = new System.Drawing.Size(1073, 45);
             this.программноеОбеспечениеBindingNavigator.TabIndex = 0;
             this.программноеОбеспечениеBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -181,12 +184,16 @@
             this.программноеОбеспечениеDataGridView.Name = "программноеОбеспечениеDataGridView";
             this.программноеОбеспечениеDataGridView.RowHeadersWidth = 51;
             this.программноеОбеспечениеDataGridView.RowTemplate.Height = 24;
-            this.программноеОбеспечениеDataGridView.Size = new System.Drawing.Size(1041, 220);
+            this.программноеОбеспечениеDataGridView.Size = new System.Drawing.Size(1073, 279);
             this.программноеОбеспечениеDataGridView.TabIndex = 1;
+            this.программноеОбеспечениеDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.программноеОбеспечениеDataGridView_CellContentClick);
             // 
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.DataPropertyName = "Name";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
+            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewTextBoxColumn2.HeaderText = "Название";
             this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
@@ -195,6 +202,9 @@
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.DataPropertyName = "License_key";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
+            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewTextBoxColumn3.HeaderText = "Ключ";
             this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
@@ -203,6 +213,9 @@
             // dataGridViewTextBoxColumn4
             // 
             this.dataGridViewTextBoxColumn4.DataPropertyName = "Date_of_receving";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
+            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewTextBoxColumn4.HeaderText = "Дата получения";
             this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
@@ -212,7 +225,7 @@
             // 
             this.comboBox1.Font = new System.Drawing.Font("Segoe UI", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(710, 7);
+            this.comboBox1.Location = new System.Drawing.Point(772, 7);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(79, 33);
             this.comboBox1.TabIndex = 20;
@@ -221,7 +234,7 @@
             // Search_textBox
             // 
             this.Search_textBox.Font = new System.Drawing.Font("Segoe UI", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.Search_textBox.Location = new System.Drawing.Point(859, 8);
+            this.Search_textBox.Location = new System.Drawing.Point(921, 8);
             this.Search_textBox.Name = "Search_textBox";
             this.Search_textBox.Size = new System.Drawing.Size(140, 31);
             this.Search_textBox.TabIndex = 19;
@@ -230,24 +243,22 @@
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.White;
-            this.pictureBox2.BackgroundImage = global::WPFUIKitProfessional.Properties.Resources.icons8_search_362;
-            this.pictureBox2.Location = new System.Drawing.Point(815, 4);
+            this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
+            this.pictureBox2.Location = new System.Drawing.Point(877, 4);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(38, 38);
             this.pictureBox2.TabIndex = 18;
             this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.White;
-            this.pictureBox1.BackgroundImage = global::WPFUIKitProfessional.Properties.Resources.icons8_sort_361;
-            this.pictureBox1.Location = new System.Drawing.Point(665, 5);
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
+            this.pictureBox1.Location = new System.Drawing.Point(727, 5);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(39, 36);
             this.pictureBox1.TabIndex = 17;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // Date_textBox
             // 
@@ -267,7 +278,6 @@
             this.Key_textBox.Name = "Key_textBox";
             this.Key_textBox.Size = new System.Drawing.Size(100, 31);
             this.Key_textBox.TabIndex = 23;
-            this.Key_textBox.TextChanged += new System.EventHandler(this.Key_textBox_TextChanged);
             // 
             // Name_textBox
             // 
@@ -277,14 +287,13 @@
             this.Name_textBox.Name = "Name_textBox";
             this.Name_textBox.Size = new System.Drawing.Size(100, 31);
             this.Name_textBox.TabIndex = 24;
-            this.Name_textBox.TextChanged += new System.EventHandler(this.Name_textBox_TextChanged);
             // 
             // Software
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(1041, 450);
+            this.ClientSize = new System.Drawing.Size(1073, 450);
             this.Controls.Add(this.Name_textBox);
             this.Controls.Add(this.Key_textBox);
             this.Controls.Add(this.Date_textBox);
@@ -295,6 +304,7 @@
             this.Controls.Add(this.программноеОбеспечениеDataGridView);
             this.Controls.Add(this.программноеОбеспечениеBindingNavigator);
             this.Name = "Software";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Software";
             this.Load += new System.EventHandler(this.Software_Load);
             ((System.ComponentModel.ISupportInitialize)(this.deeplomDataSet1)).EndInit();
@@ -323,9 +333,6 @@
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.ToolStripButton программноеОбеспечениеBindingNavigatorSaveItem;
         private System.Windows.Forms.DataGridView программноеОбеспечениеDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.TextBox Search_textBox;
         private System.Windows.Forms.PictureBox pictureBox2;
@@ -333,5 +340,8 @@
         private System.Windows.Forms.TextBox Date_textBox;
         private System.Windows.Forms.TextBox Key_textBox;
         private System.Windows.Forms.TextBox Name_textBox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
     }
 }

@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\korgm\OneDrive\Рабочий стол\Дипломный проект\Проект\Программа\repos\dieplompr\obj\Debug\
+C:\Users\korgm\OneDrive\Рабочий стол\Дипломный проект\Проект\Программа\Menu2\obj\Debug\
 WPFUIKitProfessional
 none
 false
 DEBUG;TRACE
-C:\Users\korgm\OneDrive\Рабочий стол\Дипломный проект\Проект\Программа\repos\dieplompr\App.xaml
-151198247997
+C:\Users\korgm\OneDrive\Рабочий стол\Дипломный проект\Проект\Программа\Menu2\App.xaml
+16-181128629
 
-23-1693519121
-24-395238536
-Assets\Icons\Icons.xaml;LoginWindow.xaml;MainWindow.xaml;Pages\Analytics.xaml;Pages\Collections.xaml;Pages\Home.xaml;Pages\Messages.xaml;Styles\ButtonStyle.xaml;Styles\ButtonStyles.xaml;Styles\DataGridStyles.xaml;Styles\ImageStyles.xaml;Styles\RadioButtonStyle.xaml;Styles\TextBoxSearchStyles.xaml;Themes\DarkTheme.xaml;Themes\LightTheme.xaml;
+24529430113
+651125562809
+Assets\Icons\Icons.xaml;CheckWindow.xaml;LoginWindow.xaml;MainWindow.xaml;Pages\Analytics.xaml;Pages\Collections.xaml;Pages\Home.xaml;Pages\Messages.xaml;Styles\ButtonStyle.xaml;Styles\ButtonStyles.xaml;Styles\DataGridStyles.xaml;Styles\ImageStyles.xaml;Styles\RadioButtonStyle.xaml;Styles\TextBoxSearchStyles.xaml;Themes\DarkTheme.xaml;Themes\LightTheme.xaml;
 
-False
+True
 

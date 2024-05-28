@@ -1,0 +1,17 @@
+﻿<Window x:Class="WPFUIKitProfessional.CheckWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFUIKitProfessional"
+        mc:Ignorable="d"
+        Title="CheckWindow" Height="200" Width="300">
+    <Grid>
+        <TextBox x:Name="txtLogin" HorizontalAlignment="Left" Margin="119,64,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <PasswordBox x:Name="txtPassword" HorizontalAlignment="Left" Margin="119,92,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Продолжить" HorizontalAlignment="Left" Margin="166,131,0,0" VerticalAlignment="Top" Click="btnOK_Click"/>
+        <Rectangle HorizontalAlignment="Center" Height="39" Stroke="Black" VerticalAlignment="Top" Width="300" Fill="#FFCFD90A"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,4,0,0" TextWrapping="Wrap" Text="Чтобы продолжить, вы должны обладать правами администратора" VerticalAlignment="Top" RenderTransformOrigin="0.463,-0.085"/>
+
+    </Grid>
+</Window>

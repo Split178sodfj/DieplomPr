@@ -9,9 +9,6 @@
       Title="Home" FontFamily="Poppins">
 
     <Border CornerRadius="8" Background="{DynamicResource SecundaryBackgroundColor}">
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Label Content="Current Time:" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource PrimaryTextColor}" Margin="0,0,10,0" />
-            <TextBlock x:Name="TimeTextBlock" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource PrimaryTextColor}" />
-        </StackPanel>
+        
     </Border>
 </Page>

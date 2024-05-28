@@ -14,18 +14,31 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WPFUIKitProfessional.Themes;
 using WPFUIKitProfessional.Pages;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace WPFUIKitProfessional
 {
     /// <summary>
-    /// Lógica de interacción para MainWindow.xaml
+    /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Software softwareForm;
+        private Technic technicForm;
+        private Orders ordersForm;
+        private Roles rolesForm;
+        private bool isSoftwareFormOpen = false;
+        private bool isTechnicFormOpen = false;
+        private bool isOrdersFormOpen = false;
+        private bool isRolesFormOpen = false;
+
         public MainWindow()
         {
             InitializeComponent();
         }
+
+      
 
         private void Themes_Click(object sender, RoutedEventArgs e)
         {
@@ -60,26 +73,101 @@ namespace WPFUIKitProfessional
 
         private void rdAnalytics_Click(object sender, RoutedEventArgs e)
         {
-            Software software = new Software();
-            software.Show();
+            if (!isSoftwareFormOpen)
+            {
+                softwareForm = new Software();
+                softwareForm.Closed += SoftwareForm_Closed;
+                softwareForm.Show();
+                isSoftwareFormOpen = true;
+            }
+            else
+            {
+                softwareForm.Activate();
+            }
+        }
+
+        private void SoftwareForm_Closed(object sender, EventArgs e)
+        {
+            isSoftwareFormOpen = false;
+            softwareForm.Closed -= SoftwareForm_Closed;
         }
 
         private void rdMessages_Click(object sender, RoutedEventArgs e)
         {
-            Technic technic = new Technic();
-            technic.Show();
+            if (!isTechnicFormOpen)
+            {
+                technicForm = new Technic();
+                technicForm.Closed += TechnicForm_Closed;
+                technicForm.Show();
+                isTechnicFormOpen = true;
+            }
+            else
+            {
+                technicForm.Activate();
+            }
         }
 
-        private void rdCollections_Click(object sender, RoutedEventArgs e)
+        private void TechnicForm_Closed(object sender, EventArgs e)
         {
-            Orders orders = new Orders();
-            orders.Show();
+            isTechnicFormOpen = false;
+            technicForm.Closed -= TechnicForm_Closed;
+        }
+
+        private void rdOrders_Click(object sender, RoutedEventArgs e)
+        {
+            if (!isOrdersFormOpen)
+            {
+                ordersForm = new Orders();
+                ordersForm.Closed += OrdersForm_Closed;
+                ordersForm.Show();
+                isOrdersFormOpen = true;
+            }
+            else
+            {
+                ordersForm.Activate();
+            }
+        }
+
+        private void OrdersForm_Closed(object sender, EventArgs e)
+        {
+            isOrdersFormOpen = false;
+            ordersForm.Closed -= OrdersForm_Closed;
         }
 
         private void rdUsers_Click(object sender, RoutedEventArgs e)
         {
-            Roles form1 = new Roles();
-            form1.Show();
+            if (!isRolesFormOpen)
+            {
+                // Отобразить окно для ввода данных администратора
+                var login = new CheckWindow();
+                login.ShowDialog();
+
+                if (login.DialogResult == true)
+                {
+                    // Проверить, введены ли правильные данные администратора
+                    if (login.LoginText == "4" && login.PasswordText == "5")
+                    {
+                        rolesForm = new Roles();
+                        rolesForm.Closed += RolesForm_Closed;
+                        rolesForm.Show();
+                        isRolesFormOpen = true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Неверный логин или пароль администратора.");
+                    }
+                }
+            }
+            else
+            {
+                rolesForm.Activate();
+            }
+        }
+
+        private void RolesForm_Closed(object sender, EventArgs e)
+        {
+            isRolesFormOpen = false;
+            rolesForm.Closed -= RolesForm_Closed;
         }
     }
 }
