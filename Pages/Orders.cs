@@ -1,12 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using System.Text;
+using DocumentFormat.OpenXml;
+using DocumentFormat.OpenXml.Packaging;
+using DocumentFormat.OpenXml.Wordprocessing; // <--- Add this line
+using System.Linq;
+
+//...
+
+
+
+
 
 namespace WPFUIKitProfessional.Pages
 {
@@ -17,13 +22,10 @@ namespace WPFUIKitProfessional.Pages
             InitializeComponent();
         }
 
-    
-
         private void Orders_Load(object sender, EventArgs e)
         {
             // TODO: данная строка кода позволяет загрузить данные в таблицу "deeplomDataSet2.Order". При необходимости она может быть перемещена или удалена.
             this.orderTableAdapter.Fill(this.deeplomDataSet2.Order);
-
 
             // Подключить обработчик события TextChanged к Search_textBox
             Search_textBox.TextChanged += Search_textBox_TextChanged;
@@ -31,17 +33,6 @@ namespace WPFUIKitProfessional.Pages
             // Заполнить comboBox1 данными для сортировки
             comboBox1.Items.Add("А-Я");
             comboBox1.Items.Add("Я-А");
-
-
-
-        }
-
-
-
-
-        private void orderBindingNavigator_RefreshItems(object sender, EventArgs e)
-        {
-
         }
 
         private void orderBindingNavigatorSaveItem_Click_1(object sender, EventArgs e)
@@ -80,50 +71,70 @@ namespace WPFUIKitProfessional.Pages
 
         }
 
-        private void Name_textBox_TextChanged(object sender, EventArgs e)
+        private void Rep_buy_button_Click(object sender, EventArgs e)
         {
-
+            CreateDocxFile();
         }
-
-        private void Amount_textBox_TextChanged(object sender, EventArgs e)
+        private void CreateDocxFile()
         {
+            string filePath = "C:\\Users\\korgm\\OneDrive\\Рабочий стол\\Дипломный проект\\Проект\\test1.docx";
+            using (WordprocessingDocument doc = WordprocessingDocument.Open(filePath, true))
+            {
+                MainDocumentPart mainPart = doc.MainDocumentPart;
+                Body body = mainPart.Document.Body;
 
-        }
+                // Find the placeholder text ": "
+                Paragraph placeholderPara = null;
+                foreach (Paragraph para in body.Elements<Paragraph>())
+                {
+                    foreach (Run run in para.Elements<Run>())
+                    {
+                        if (run.Elements<Text>().Any(t => t.Text.Contains("а:")))
+                        {
+                            placeholderPara = para;
+                            break;
+                        }
+                    }
+                    if (placeholderPara != null) break;
+                }
 
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
+                if (placeholderPara != null)
+                {
+                    // Insert the selected data after the placeholder text
+                    int count = 1;
+                    foreach (DataGridViewRow selectedRow in orderDataGridView.SelectedRows)
+                    {
+                        Paragraph dataPara = new Paragraph();
+                        Run outerRun = new Run();
+                        outerRun.AppendChild(new Text(count++.ToString() + ". ") { Space = SpaceProcessingModeValues.Preserve });
+                        dataPara.AppendChild(outerRun);
+                        foreach (DataGridViewCell cell in selectedRow.Cells)
+                        {
+                            if (cell.Value != null && cell.Value != DBNull.Value && orderDataGridView.Columns[cell.ColumnIndex].Visible)
+                            {
+                                Run innerRun = new Run();
+                                if (orderDataGridView.Columns[cell.ColumnIndex].HeaderText == "Наименование")
+                                {
+                                    innerRun.AppendChild(new Bold());
+                                }
+                                innerRun.AppendChild(new Text(cell.Value.ToString()) { Space = SpaceProcessingModeValues.Preserve });
+                                dataPara.AppendChild(innerRun);
+                                innerRun = new Run();
+                                innerRun.AppendChild(new Text(" ") { Space = SpaceProcessingModeValues.Preserve });
+                                dataPara.AppendChild(innerRun);
+                            }
+                        }
+                        body.InsertAfter(dataPara, placeholderPara);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Placeholder text not found in the document.");
+                }
 
-        }
-
-        private void orderDataGridView_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
-        {
-            //try
-            //{
-            //    // Проверка введенных данных пользователем
-            //    // Например, проверка на ввод числа
-            //    if (e.ColumnIndex == 1 && !int.TryParse(e.FormattedValue.ToString(), out int value))
-            //    {
-            //        throw new Exception("Неверная сумма. Пожалуйста, введите действительное число.");
-            //    }
-            //    // Добавить дополнительную логику проверки, если необходимо
-            //}
-            //catch (Exception ex)
-            //{
-            //    // Отобразить сообщение об ошибке пользователю
-            //    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    e.Cancel = true; // Отменить операцию редактирования
-            //    return;
-            //}
-
-        }
-
-        private void orderDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
-        {
-                
-        }
-
-        private void orderDataGridView_RowValidating(object sender, DataGridViewCellCancelEventArgs e)
-        {
+                doc.Save();
+                MessageBox.Show("Файл успешно создан и сохранен по пути: " + filePath);
+            }
         }
     }
 }

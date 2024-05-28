@@ -53,6 +53,7 @@
             this.Amount_textBox = new System.Windows.Forms.TextBox();
             this.Search_textBox = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.Rep_buy_button = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.deeplomDataSet2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderDataGridView)).BeginInit();
@@ -112,9 +113,6 @@
             this.orderDataGridView.RowTemplate.Height = 24;
             this.orderDataGridView.Size = new System.Drawing.Size(1049, 317);
             this.orderDataGridView.TabIndex = 1;
-            this.orderDataGridView.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.orderDataGridView_CellValidating);
-            this.orderDataGridView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.orderDataGridView_DataError);
-            this.orderDataGridView.RowValidating += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.orderDataGridView_RowValidating);
             // 
             // dataGridViewTextBoxColumn3
             // 
@@ -216,7 +214,6 @@
             this.pictureBox2.Size = new System.Drawing.Size(38, 38);
             this.pictureBox2.TabIndex = 12;
             this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // pictureBox1
             // 
@@ -237,7 +234,6 @@
             this.Name_textBox.Size = new System.Drawing.Size(214, 31);
             this.Name_textBox.TabIndex = 13;
             this.Name_textBox.Text = "Название";
-            this.Name_textBox.TextChanged += new System.EventHandler(this.Name_textBox_TextChanged);
             // 
             // Amount_textBox
             // 
@@ -248,7 +244,6 @@
             this.Amount_textBox.Size = new System.Drawing.Size(143, 31);
             this.Amount_textBox.TabIndex = 14;
             this.Amount_textBox.Text = "Количество";
-            this.Amount_textBox.TextChanged += new System.EventHandler(this.Amount_textBox_TextChanged);
             // 
             // Search_textBox
             // 
@@ -269,12 +264,23 @@
             this.comboBox1.TabIndex = 16;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
+            // Rep_buy_button
+            // 
+            this.Rep_buy_button.Location = new System.Drawing.Point(755, 375);
+            this.Rep_buy_button.Name = "Rep_buy_button";
+            this.Rep_buy_button.Size = new System.Drawing.Size(75, 23);
+            this.Rep_buy_button.TabIndex = 17;
+            this.Rep_buy_button.Text = "button1";
+            this.Rep_buy_button.UseVisualStyleBackColor = true;
+            this.Rep_buy_button.Click += new System.EventHandler(this.Rep_buy_button_Click);
+            // 
             // Orders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(1049, 519);
+            this.Controls.Add(this.Rep_buy_button);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.Search_textBox);
             this.Controls.Add(this.Amount_textBox);
@@ -320,5 +326,6 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.Button Rep_buy_button;
     }
 }
