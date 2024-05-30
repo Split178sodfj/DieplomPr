@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DocumentFormat.OpenXml;
+using DocumentFormat.OpenXml.Packaging;
+using DocumentFormat.OpenXml.Wordprocessing;
 
 namespace WPFUIKitProfessional.Pages
 {
@@ -149,5 +152,256 @@ namespace WPFUIKitProfessional.Pages
             //}
         }
 
+        private void Rep_upd_button_Click(object sender, EventArgs e)
+        {
+            string filePath = "C:\\Users\\korgm\\OneDrive\\Рабочий стол\\Дипломный проект\\Проект\\2ProgsUpdaterRep.docx";
+            using (WordprocessingDocument doc = WordprocessingDocument.Open(filePath, true))
+            {
+                MainDocumentPart mainPart = doc.MainDocumentPart;
+                Body body = mainPart.Document.Body;
+
+                //  поиск двоеточия
+                Paragraph placeholderPara = null;
+                foreach (Paragraph para in body.Elements<Paragraph>())
+                {
+                    foreach (Run run in para.Elements<Run>())
+                    {
+                        if (run.Elements<Text>().Any(t => t.Text.Contains("а:")))
+                        {
+                            placeholderPara = para;
+                            break;
+                        }
+                    }
+                    if (placeholderPara != null) break;
+                }
+
+                if (placeholderPara != null)
+                {
+                    // вставить текст
+                    int count = 1;
+                    foreach (DataGridViewRow selectedRow in программноеОбеспечениеDataGridView.SelectedRows)
+                    {
+                        Paragraph dataPara = new Paragraph();
+                        Run outerRun = new Run();
+                        outerRun.AppendChild(new Text(count++.ToString() + ". ") { Space = SpaceProcessingModeValues.Preserve });
+                        dataPara.AppendChild(outerRun);
+                        foreach (DataGridViewCell cell in selectedRow.Cells)
+                        {
+                            if (cell.Value != null && cell.Value != DBNull.Value && программноеОбеспечениеDataGridView.Columns[cell.ColumnIndex].Visible)
+                            {
+                                Run innerRun = new Run();
+                                if (программноеОбеспечениеDataGridView.Columns[cell.ColumnIndex].HeaderText == "Наименование")
+                                {
+                                    innerRun.AppendChild(new Bold());
+                                }
+                                innerRun.AppendChild(new Text(cell.Value.ToString()) { Space = SpaceProcessingModeValues.Preserve });
+                                dataPara.AppendChild(innerRun);
+                                innerRun = new Run();
+                                innerRun.AppendChild(new Text(" ") { Space = SpaceProcessingModeValues.Preserve });
+                                dataPara.AppendChild(innerRun);
+                            }
+                        }
+                        body.InsertAfter(dataPara, placeholderPara);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("файла не существует.");
+                }
+
+                doc.Save();
+                MessageBox.Show("Файл успешно создан и сохранен по пути: " + filePath);
+            }
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            
+            string filePath = "C:\\Users\\korgm\\OneDrive\\Рабочий стол\\Дипломный проект\\Проект\\3ProgsContQuery.docx";
+            using (WordprocessingDocument doc = WordprocessingDocument.Open(filePath, true))
+            {
+                MainDocumentPart mainPart = doc.MainDocumentPart;
+                Body body = mainPart.Document.Body;
+
+                //  поиск двоеточия
+                Paragraph placeholderPara = null;
+                foreach (Paragraph para in body.Elements<Paragraph>())
+                {
+                    foreach (Run run in para.Elements<Run>())
+                    {
+                        if (run.Elements<Text>().Any(t => t.Text.Contains("а:")))
+                        {
+                            placeholderPara = para;
+                            break;
+                        }
+                    }
+                    if (placeholderPara != null) break;
+                }
+
+                if (placeholderPara != null)
+                {
+                    // вставить текст
+                    int count = 1;
+                    foreach (DataGridViewRow selectedRow in программноеОбеспечениеDataGridView.SelectedRows)
+                    {
+                        Paragraph dataPara = new Paragraph();
+                        Run outerRun = new Run();
+                        outerRun.AppendChild(new Text(count++.ToString() + ". ") { Space = SpaceProcessingModeValues.Preserve });
+                        dataPara.AppendChild(outerRun);
+                        foreach (DataGridViewCell cell in selectedRow.Cells)
+                        {
+                            if (cell.Value != null && cell.Value != DBNull.Value && программноеОбеспечениеDataGridView.Columns[cell.ColumnIndex].Visible)
+                            {
+                                Run innerRun = new Run();
+                                if (программноеОбеспечениеDataGridView.Columns[cell.ColumnIndex].HeaderText == "Наименование")
+                                {
+                                    innerRun.AppendChild(new Bold());
+                                }
+                                innerRun.AppendChild(new Text(cell.Value.ToString()) { Space = SpaceProcessingModeValues.Preserve });
+                                dataPara.AppendChild(innerRun);
+                                innerRun = new Run();
+                                innerRun.AppendChild(new Text(" ") { Space = SpaceProcessingModeValues.Preserve });
+                                dataPara.AppendChild(innerRun);
+                            }
+                        }
+                        body.InsertAfter(dataPara, placeholderPara);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("файла не существует.");
+                }
+
+                doc.Save();
+                MessageBox.Show("Файл успешно создан и сохранен по пути: " + filePath);
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            
+            string filePath = "C:\\Users\\korgm\\OneDrive\\Рабочий стол\\Дипломный проект\\Проект\\4ProgsRepFail.docx";
+            using (WordprocessingDocument doc = WordprocessingDocument.Open(filePath, true))
+            {
+                MainDocumentPart mainPart = doc.MainDocumentPart;
+                Body body = mainPart.Document.Body;
+
+                //  поиск двоеточия
+                Paragraph placeholderPara = null;
+                foreach (Paragraph para in body.Elements<Paragraph>())
+                {
+                    foreach (Run run in para.Elements<Run>())
+                    {
+                        if (run.Elements<Text>().Any(t => t.Text.Contains("а:")))
+                        {
+                            placeholderPara = para;
+                            break;
+                        }
+                    }
+                    if (placeholderPara != null) break;
+                }
+
+                if (placeholderPara != null)
+                {
+                    // вставить текст
+                    int count = 1;
+                    foreach (DataGridViewRow selectedRow in программноеОбеспечениеDataGridView.SelectedRows)
+                    {
+                        Paragraph dataPara = new Paragraph();
+                        Run outerRun = new Run();
+                        outerRun.AppendChild(new Text(count++.ToString() + ". ") { Space = SpaceProcessingModeValues.Preserve });
+                        dataPara.AppendChild(outerRun);
+                        foreach (DataGridViewCell cell in selectedRow.Cells)
+                        {
+                            if (cell.Value != null && cell.Value != DBNull.Value && программноеОбеспечениеDataGridView.Columns[cell.ColumnIndex].Visible)
+                            {
+                                Run innerRun = new Run();
+                                if (программноеОбеспечениеDataGridView.Columns[cell.ColumnIndex].HeaderText == "Наименование")
+                                {
+                                    innerRun.AppendChild(new Bold());
+                                }
+                                innerRun.AppendChild(new Text(cell.Value.ToString()) { Space = SpaceProcessingModeValues.Preserve });
+                                dataPara.AppendChild(innerRun);
+                                innerRun = new Run();
+                                innerRun.AppendChild(new Text(" ") { Space = SpaceProcessingModeValues.Preserve });
+                                dataPara.AppendChild(innerRun);
+                            }
+                        }
+                        body.InsertAfter(dataPara, placeholderPara);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("файла не существует.");
+                }
+
+                doc.Save();
+                MessageBox.Show("Файл успешно создан и сохранен по пути: " + filePath);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //
+            string filePath = "C:\\Users\\korgm\\OneDrive\\Рабочий стол\\Дипломный проект\\Проект\\5ProgsCopyRep.docx";
+            using (WordprocessingDocument doc = WordprocessingDocument.Open(filePath, true))
+            {
+                MainDocumentPart mainPart = doc.MainDocumentPart;
+                Body body = mainPart.Document.Body;
+
+                //  поиск двоеточия
+                Paragraph placeholderPara = null;
+                foreach (Paragraph para in body.Elements<Paragraph>())
+                {
+                    foreach (Run run in para.Elements<Run>())
+                    {
+                        if (run.Elements<Text>().Any(t => t.Text.Contains("а:")))
+                        {
+                            placeholderPara = para;
+                            break;
+                        }
+                    }
+                    if (placeholderPara != null) break;
+                }
+
+                if (placeholderPara != null)
+                {
+                    // вставить текст
+                    int count = 1;
+                    foreach (DataGridViewRow selectedRow in программноеОбеспечениеDataGridView.SelectedRows)
+                    {
+                        Paragraph dataPara = new Paragraph();
+                        Run outerRun = new Run();
+                        outerRun.AppendChild(new Text(count++.ToString() + ". ") { Space = SpaceProcessingModeValues.Preserve });
+                        dataPara.AppendChild(outerRun);
+                        foreach (DataGridViewCell cell in selectedRow.Cells)
+                        {
+                            if (cell.Value != null && cell.Value != DBNull.Value && программноеОбеспечениеDataGridView.Columns[cell.ColumnIndex].Visible)
+                            {
+                                Run innerRun = new Run();
+                                if (программноеОбеспечениеDataGridView.Columns[cell.ColumnIndex].HeaderText == "Наименование")
+                                {
+                                    innerRun.AppendChild(new Bold());
+                                }
+                                innerRun.AppendChild(new Text(cell.Value.ToString()) { Space = SpaceProcessingModeValues.Preserve });
+                                dataPara.AppendChild(innerRun);
+                                innerRun = new Run();
+                                innerRun.AppendChild(new Text(" ") { Space = SpaceProcessingModeValues.Preserve });
+                                dataPara.AppendChild(innerRun);
+                            }
+                        }
+                        body.InsertAfter(dataPara, placeholderPara);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("файла не существует.");
+                }
+
+                doc.Save();
+                MessageBox.Show("Файл успешно создан и сохранен по пути: " + filePath);
+            }
+        }
     }
 }

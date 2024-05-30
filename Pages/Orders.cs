@@ -4,13 +4,8 @@ using System.IO;
 using System.Text;
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
-using DocumentFormat.OpenXml.Wordprocessing; // <--- Add this line
+using DocumentFormat.OpenXml.Wordprocessing;
 using System.Linq;
-
-//...
-
-
-
 
 
 namespace WPFUIKitProfessional.Pages
@@ -77,13 +72,13 @@ namespace WPFUIKitProfessional.Pages
         }
         private void CreateDocxFile()
         {
-            string filePath = "C:\\Users\\korgm\\OneDrive\\Рабочий стол\\Дипломный проект\\Проект\\test1.docx";
+            string filePath = "C:\\Users\\korgm\\OneDrive\\Рабочий стол\\Дипломный проект\\Проект\\1ProgsBuyQuery.docx";
             using (WordprocessingDocument doc = WordprocessingDocument.Open(filePath, true))
             {
                 MainDocumentPart mainPart = doc.MainDocumentPart;
                 Body body = mainPart.Document.Body;
 
-                // Find the placeholder text ": "
+                //  поиск двоеточия
                 Paragraph placeholderPara = null;
                 foreach (Paragraph para in body.Elements<Paragraph>())
                 {
@@ -100,7 +95,7 @@ namespace WPFUIKitProfessional.Pages
 
                 if (placeholderPara != null)
                 {
-                    // Insert the selected data after the placeholder text
+                    // вставить текст
                     int count = 1;
                     foreach (DataGridViewRow selectedRow in orderDataGridView.SelectedRows)
                     {
@@ -129,7 +124,69 @@ namespace WPFUIKitProfessional.Pages
                 }
                 else
                 {
-                    MessageBox.Show("Placeholder text not found in the document.");
+                    MessageBox.Show("файла не существует.");
+                }
+
+                doc.Save();
+                MessageBox.Show("Файл успешно создан и сохранен по пути: " + filePath);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string filePath = "C:\\Users\\korgm\\OneDrive\\Рабочий стол\\Дипломный проект\\Проект\\6CompBuyQuery.docx";
+            using (WordprocessingDocument doc = WordprocessingDocument.Open(filePath, true))
+            {
+                MainDocumentPart mainPart = doc.MainDocumentPart;
+                Body body = mainPart.Document.Body;
+
+                //  поиск двоеточия
+                Paragraph placeholderPara = null;
+                foreach (Paragraph para in body.Elements<Paragraph>())
+                {
+                    foreach (Run run in para.Elements<Run>())
+                    {
+                        if (run.Elements<Text>().Any(t => t.Text.Contains("а:")))
+                        {
+                            placeholderPara = para;
+                            break;
+                        }
+                    }
+                    if (placeholderPara != null) break;
+                }
+
+                if (placeholderPara != null)
+                {
+                    // вставить текст
+                    int count = 1;
+                    foreach (DataGridViewRow selectedRow in orderDataGridView.SelectedRows)
+                    {
+                        Paragraph dataPara = new Paragraph();
+                        Run outerRun = new Run();
+                        outerRun.AppendChild(new Text(count++.ToString() + ". ") { Space = SpaceProcessingModeValues.Preserve });
+                        dataPara.AppendChild(outerRun);
+                        foreach (DataGridViewCell cell in selectedRow.Cells)
+                        {
+                            if (cell.Value != null && cell.Value != DBNull.Value && orderDataGridView.Columns[cell.ColumnIndex].Visible)
+                            {
+                                Run innerRun = new Run();
+                                if (orderDataGridView.Columns[cell.ColumnIndex].HeaderText == "Наименование")
+                                {
+                                    innerRun.AppendChild(new Bold());
+                                }
+                                innerRun.AppendChild(new Text(cell.Value.ToString()) { Space = SpaceProcessingModeValues.Preserve });
+                                dataPara.AppendChild(innerRun);
+                                innerRun = new Run();
+                                innerRun.AppendChild(new Text(" ") { Space = SpaceProcessingModeValues.Preserve });
+                                dataPara.AppendChild(innerRun);
+                            }
+                        }
+                        body.InsertAfter(dataPara, placeholderPara);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("файла не существует.");
                 }
 
                 doc.Save();
