@@ -1,23 +1,24 @@
-﻿<Window x:Class="WPFUIKitProfessional.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFUIKitProfessional"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="WPFUIKitProfessional.MainWindow"
         mc:Ignorable="d" x:Name="home" 
         Title="MainWindow" Height="720" Width="1100"
         WindowStartupLocation="CenterScreen" WindowStyle="None"
         Background="Transparent" AllowsTransparency="True"
         ResizeMode="NoResize" WindowState="Normal" FontFamily="Poppins">
 
-    
+
     <Border CornerRadius="10" Background="{DynamicResource PrimaryBackgroundColor}">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="250"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            
+
             <!-- Start: GridColumn Left -->
             <Border CornerRadius="10 0 0 10"
                     Padding="10"
@@ -29,7 +30,7 @@
                         <RowDefinition Height="130"/>
                         <RowDefinition Height="80"/>
                     </Grid.RowDefinitions>
-                    
+
                     <!-- Logo -->
                     <StackPanel Grid.Row="0" Orientation="Horizontal">
                         <Image Source="/Assets/Images/symbol1.jpg" Stretch="Fill" Height="36" Width="36" VerticalAlignment="Center" Margin="10 0 0 0"/>
@@ -37,14 +38,14 @@
                     </StackPanel>
 
                     <StackPanel Grid.Row="1">
-                        <RadioButton x:Name="rdHome" Content="Рабочий стол" Style="{DynamicResource MenuRadioButtonStyle}" Tag="{DynamicResource home}" Margin="0 30 0 0" Click="rdHome_Click"/>
+                        <RadioButton x:Name="rdHome" Content="База данных" Style="{DynamicResource MenuRadioButtonStyle}" Tag="{DynamicResource home}" Margin="0 30 0 0" Click="rdHome_Click"/>
                         <RadioButton x:Name="rdAnalytics" Content="Программы" Style="{DynamicResource MenuRadioButtonStyle}" Tag="{DynamicResource analytics}" Margin="0 1 0 1" Click="rdAnalytics_Click"/>
                         <RadioButton x:Name="rdMessages" Content="Техника" Style="{DynamicResource MenuRadioButtonStyle}" Tag="{DynamicResource messages}" Click="rdMessages_Click"/>
                         <RadioButton x:Name="rdCollections" Content="Заказы" Style="{DynamicResource MenuRadioButtonStyle}" Tag="{DynamicResource collections}" Margin="0 1 0 1" Click="rdOrders_Click"/>
                         <RadioButton x:Name="rdUsers" Content="Роли" Style="{DynamicResource MenuRadioButtonStyle}" Tag="{DynamicResource users}" Click="rdUsers_Click"/>
 
                         <Separator Margin="20 20" Background="{DynamicResource TertiaryBackgroundColor}"/>
-                    
+
                     </StackPanel>
 
                     <Border Grid.Row="2"
@@ -59,31 +60,10 @@
                                             Softness="0.8"/>
                         </Border.BitmapEffect>
                         <Grid Margin="20">
-                            <Button Content="Справка" Style="{DynamicResource ProButtonStyle}" Margin="0 0 0 0" FontSize="16" />
+                            <Button Content="Админ" Style="{DynamicResource ProButtonStyle}" Margin="0 0 0 0" FontSize="16" />
                         </Grid>
                     </Border>
 
-                    <Path Grid.Row="3" Data="{DynamicResource information}" Fill="{DynamicResource TertiaryTextColor}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20 0 0 0"/>
-                    <Border Grid.Row="3" CornerRadius="18" Width="110" Height="35" Background="{DynamicResource TertiaryBackgroundColor}" HorizontalAlignment="Right" Margin="0 0 20 0">
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                            <Path Data="{DynamicResource sun}" Height="16" Width="16" Stretch="UniformToFill" Fill="{DynamicResource PrimaryYellowColor}" VerticalAlignment="Center"/>
-                            <ToggleButton x:Name="Themes"
-                                  IsChecked="False"
-                                  Click="Themes_Click"
-                                  HorizontalAlignment="Right"
-                                  Style="{DynamicResource ToggleButtonStyle}"
-                                  Margin="10 0 10 0"/>
-                            <Path Data="{DynamicResource moon}" Height="16" Width="16" Stretch="Fill" Fill="{DynamicResource PrimaryWhiteColor}" VerticalAlignment="Center"/>
-                        </StackPanel>
-                        <!--<Border.BitmapEffect>
-                            <DropShadowBitmapEffect
-                                            ShadowDepth="1"
-                                            Direction="0"
-                                            Color="#5B8DEF"
-                                            Softness="0.8"/>
-                        </Border.BitmapEffect>-->
-                    </Border>
-                
                 </Grid>
             </Border>
             <!-- End: GridColumn Left -->
@@ -101,7 +81,7 @@
                             <Style TargetType="{x:Type Button}" BasedOn="{StaticResource IconButtonsStyle}">
                                 <Setter Property="Content" Value="{DynamicResource maximize}"/>
                                 <Style.Triggers>
-                                    <DataTrigger Binding="{Binding ElementName=home, Path=WindowState}" Value="Maximized">
+                                    <DataTrigger Binding="{Binding WindowState, ElementName=home}" Value="Maximized">
                                         <Setter Property="Content" Value="{DynamicResource restore}"/>
                                     </DataTrigger>
                                 </Style.Triggers>
@@ -110,15 +90,23 @@
                     </Button>
                     <Button x:Name="btnMinimize" Style="{DynamicResource IconButtonsStyle}" Content="{DynamicResource minimize}" Click="btnMinimize_Click"/>
                 </StackPanel>
+                <TextBlock HorizontalAlignment="Center" Margin="0,19,0,0" Grid.Row="1" TextWrapping="Wrap" Text="- это программное обеспечения для учёта оборудования и программного обеспечения." VerticalAlignment="Top" FontFamily="Segoe UI" FontSize="18" FontWeight="Bold" Width="544"/>
+                <Label Content="Контактные данные: " Foreground="{DynamicResource SecundaryBlueColor}" FontWeight="Bold" FontSize="24" HorizontalContentAlignment="Left" Margin="63,582,532,40" Grid.Row="1"/>
+                <TextBlock HorizontalAlignment="Center" Margin="0,588,0,0" Grid.Row="1" TextWrapping="Wrap" Text="+79968015773 ar1613@rambler.ru" VerticalAlignment="Top" FontFamily="Segoe UI" FontSize="18" FontWeight="Bold" Width="196"/>
+                <Image HorizontalAlignment="Left" Height="377" Margin="221,128,0,0" Grid.Row="1" VerticalAlignment="Top" Width="382" Opacity="0.14" Source="/symbol01.jpg"/>
+                <Label Content="Работа с:" Foreground="{DynamicResource SecundaryBlueColor}" FontWeight="Bold" FontSize="24" HorizontalContentAlignment="Left" Margin="39,101,684,521" Grid.Row="1"/>
+                <Label Content="Отчетами:" Foreground="{DynamicResource SecundaryBlueColor}" FontWeight="Bold" FontSize="24" HorizontalContentAlignment="Left" Margin="20,231,678,391" Grid.Row="1"/>
+                <Label Content="Таблицами:" Foreground="{DynamicResource SecundaryBlueColor}" FontWeight="Bold" FontSize="24" HorizontalContentAlignment="Left" Margin="5,167,692,455" Grid.Row="1"/>
+                <TextBlock HorizontalAlignment="Center" Margin="0,19,0,0" Grid.Row="1" TextWrapping="Wrap" Text="- это программное обеспечения для учёта оборудования и программного обеспечения." VerticalAlignment="Top" FontFamily="Segoe UI" FontSize="18" FontWeight="Bold" Width="544"/>
+                <TextBlock HorizontalAlignment="Left" Margin="158,162,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Segoe UI" FontSize="18" FontWeight="Bold" Width="544"><Run Language="ru-ru" Text="Формат ввода данных, типа даты - д м г"/><LineBreak/><Run Language="ru-ru"/></TextBlock>
+                <TextBlock HorizontalAlignment="Center" Margin="0,231,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Segoe UI" FontSize="18" FontWeight="Bold" Width="544" Text="для экспорта, зажать  CTRL и выделить нужны строки, под номером. После - нажать на нужну кнопку для отчета."/>
                 <!-- End: Button Close | Restore | Minimize -->
-                
+
                 <!-- Start: Frame Container -->
-                <Border Grid.Row="1" CornerRadius="0 0 5 0" Background="Transparent">
-                    <Frame x:Name="frameContent" NavigationUIVisibility="Hidden" Margin="10"/>
-                </Border>
                 <!-- End: Frame Container -->
-                
+
             </Grid>
+            <Label Content="Учетка - программное обеспечения для " Foreground="{DynamicResource SecundaryBlueColor}" FontWeight="Bold" FontSize="24" HorizontalContentAlignment="Left" Margin="64,72,697,610" Grid.Column="1"/>
         </Grid>
     </Border>
 </Window>

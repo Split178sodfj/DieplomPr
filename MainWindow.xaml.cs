@@ -40,14 +40,6 @@ namespace WPFUIKitProfessional
 
       
 
-        private void Themes_Click(object sender, RoutedEventArgs e)
-        {
-            if (Themes.IsChecked == true)
-                ThemesController.SetTheme(ThemesController.ThemeTypes.Dark);
-            else
-                ThemesController.SetTheme(ThemesController.ThemeTypes.Light);
-        }
-
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
             Close();
@@ -68,7 +60,10 @@ namespace WPFUIKitProfessional
 
         private void rdHome_Click(object sender, RoutedEventArgs e)
         {
-            frameContent.Navigate(new Home());
+            
+                HomeP homeWindow = new HomeP();
+                homeWindow.ShowDialog();
+
         }
 
         private void rdAnalytics_Click(object sender, RoutedEventArgs e)
@@ -169,5 +164,6 @@ namespace WPFUIKitProfessional
             isRolesFormOpen = false;
             rolesForm.Closed -= RolesForm_Closed;
         }
+
     }
 }

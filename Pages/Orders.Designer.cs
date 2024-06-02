@@ -55,6 +55,8 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.Rep_buy_button = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.deeplomDataSet2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderDataGridView)).BeginInit();
@@ -287,12 +289,34 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.label1.Location = new System.Drawing.Point(799, 371);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(144, 25);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "на покупку ПО";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.label2.Location = new System.Drawing.Point(799, 408);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(194, 25);
+            this.label2.TabIndex = 20;
+            this.label2.Text = "на покупку техники";
+            // 
             // Orders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(1049, 519);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Rep_buy_button);
             this.Controls.Add(this.comboBox1);
@@ -342,5 +366,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.Button Rep_buy_button;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

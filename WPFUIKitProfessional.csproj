@@ -278,6 +278,9 @@
     <Compile Include="Pages\Collections.xaml.cs">
       <DependentUpon>Collections.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\HomeP.xaml.cs">
+      <DependentUpon>HomeP.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Orders.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -347,6 +350,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Home.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\HomeP.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -490,6 +497,15 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Otchets\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="symbol0.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="symbol01.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pages\fon.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
